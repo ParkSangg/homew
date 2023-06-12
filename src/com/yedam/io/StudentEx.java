@@ -17,18 +17,35 @@ public class StudentEx {
 		InputStreamReader isr = new InputStreamReader(is); // 바이트 => char 로 변경
 		char[] buf = new char[200];
 		isr.read(buf);
-
+		int sum = 0,  cnt = 0;
+		int maxScore = 0;
+		double avg = 0;
+		String name = "";
+		
 		String str = new String(buf);
 //		System.out.println(str);
-		String[] strAry = str.split("\n");
+		String[] strAry = str.split("\r\n");
 		for(String student : strAry) {
+			String [] std = student.split(" ");
 			if(student != null) {
-				String [] std = student.split(" ");
-				System.out.printf("학생번호 %s 이름 %s 점수 %s", std[0], std[1],std[2]);
+				System.out.printf("학생번호 %s 이름 %s 점수 %s \n", std[0], std[1],std[2]);
 			}
+			if(maxScore < Integer.parseInt(std[2])) {
+			   maxScore = Integer.parseInt(std[2]);
+			   name = std[1];
+			}
+			sum+=Integer.parseInt(std[2]);
+			cnt++;
 		}
+		avg = (double) sum / cnt;
+		System.out.printf("평균점수 : %.2f ", avg);
+		System.out.printf("최고점수 : %d, 학생이름 : %s\n", maxScore, name);
 		isr.close();
-		is.close();
+	}
+
+	private static String parseInt(String string) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	public static void method1() throws IOException {
