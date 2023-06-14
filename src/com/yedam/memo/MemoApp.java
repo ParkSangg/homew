@@ -29,11 +29,8 @@ public class MemoApp {
 					break;
 				case MENU.EXIT:
 					app.storeToFile();
-					throw new ExitException();
 				}
-			} catch (ExitException e) {
-				break;
-			}
+			} 
 		}
 		sc.close();
 	}
